@@ -224,4 +224,4 @@ http.createServer(async (req, res) => {
     if (!f.startsWith(PUB) || !fs.existsSync(f) || !fs.statSync(f).isFile()) { res.writeHead(404); return res.end('Not found'); }
     res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream' }); fs.createReadStream(f).pipe(res);
   } catch (e) { console.error(e); send(res, 500, { error: 'خطای سرور' }); }
-}).listen(PORT, () => console.log(`همیار درس روی http://localhost:${PORT} اجرا شد`));
+}).listen(PORT, '0.0.0.0', () => console.log(`همیار درس روی http://localhost:${PORT} اجرا شد`));
